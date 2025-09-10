@@ -2,7 +2,7 @@ from django.views.generic.list import ListView
 from orgstudent.models import Organization
 from orgstudent.forms import OrganizationForm
 from django.urls import reverse_lazy
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 paginate_by = 5
 
 class HomePageView(ListView):
@@ -21,5 +21,10 @@ class OrganizationUpdateView(UpdateView):
     form_class = OrganizationForm
     template_name = 'org_form.html'
     success_url = reverse_lazy('organization-list')   
+
+class OrganizationDeleteView(DeleteView):
+    model = Organization
+    template_name = 'org_del.html'
+    success_url = reverse_lazy('organization-list')
 
 
