@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from orgstudent.views import HomePageView
+from orgstudent.views import HomePageView, OrganizationList
 from orgstudent import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.HomePageView.as_view(), name='home'),
+    path('index.html', views.home),
+    path('organization_list', OrganizationList.as_view(), name='organization-list'),
 ]
