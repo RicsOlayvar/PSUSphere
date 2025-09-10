@@ -16,6 +16,12 @@ class OrganizationList(ListView):
     template_name = 'org_list.html'
     paginate_by = 5 
 
+class OrganizationCreateView(CreateView):
+    model = Organization
+    form_class = OrganizationForm
+    template_name = 'org_form.html'
+    success_url = reverse_lazy('organization-list')
+
 class OrganizationUpdateView(UpdateView):
     model = Organization
     form_class = OrganizationForm
