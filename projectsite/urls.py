@@ -18,7 +18,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.shortcuts import render
-from orgstudent.views import HomePageView, OrganizationList
+from orgstudent.views import HomePageView, OrganizationList, OrganizationCreateView, OrganizationUpdateView
 
 def home(request):
     return render(request, 'home.html')
@@ -26,8 +26,10 @@ def home(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', HomePageView.as_view(), name='home'),
-    path('index.html', home),
+    path('home.html', home, name='home-function'),
     path('organization_list/', OrganizationList.as_view(), name='organization-list'),
+    path('organization_list/add',OrganizationCreateView.as_view(), name='organization-add'),
+    path('organization_list/<pk>',OrganizationUpdateView.as_view(), name= 'organization-update'),
 ]
 def home(request):
     return render(request, 'home.html')
