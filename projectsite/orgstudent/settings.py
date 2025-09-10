@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-2d*1%+u^zs6@*0!&$$tlu&i+-&3^1penmwq&!(jbgy(uvk8&1n
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['olayvar13.pythonanywhere.com']
+ALLOWED_HOSTS = ['olayvar13.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
@@ -58,7 +58,7 @@ ROOT_URLCONF = 'projectsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -118,11 +118,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'Static/'
+STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = (
-    BASE_DIR / 'Static',
+    BASE_DIR / 'static',
 )
 
 # Default primary key field type
