@@ -3,6 +3,11 @@ from orgstudent.models import Organization
 from orgstudent.forms import OrganizationForm
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.shortcuts import render
+
+def forms_page(request):
+    return render(request, 'org_form.html')
+
 paginate_by = 5
 
 class HomePageView(ListView):
