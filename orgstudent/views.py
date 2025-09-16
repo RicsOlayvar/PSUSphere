@@ -9,6 +9,14 @@ from django.shortcuts import render
 def forms_page(request):
     return render(request, 'org_form.html')
 
+def add_organization(request):
+    form = OrganizationForm()
+    return render(request, 'organization/add_organization.html', {
+        'form': form,
+        'section': 'Organization', 
+        'page_title': 'Add Organization',
+    })
+
 
 
 class HomePageView(ListView):
