@@ -26,11 +26,12 @@
       </tr>
     </thead>
     <tbody>
-      {% for object in object_list %}
+      {% for object in Organization %}
         <tr>
           <td>{{ object.name }}</td>
           <td>{{ object.college }}</td>
           <td>{{ object.description }}</td>
+          <td>{{ object.action }}</td>
           <td>
             <a href="{% url 'organization-update' object.pk %}" class="btn btn-sm btn-primary">Edit</a>
             <a href="{% url 'organization-delete' object.pk %}" class="btn btn-sm btn-danger">Delete</a>
