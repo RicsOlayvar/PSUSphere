@@ -1,6 +1,12 @@
 {% extends 'base.html' %}
 
 {% block content %}
+<div class="breadcrumb mb-3">
+  <a href="{% url 'home' %}">Home</a> &gt;
+  <a href="{% url 'organization-list' %}">Organization</a> &gt;
+  List
+</div>
+
 <div class="card-title">List of Organizations</div>
 <div class="card-category">Page Subtitle</div>
 
@@ -26,12 +32,12 @@
       </tr>
     </thead>
     <tbody>
-      {% for object in Organization %}
+      {% for object in organization %}
         <tr>
           <td>{{ object.name }}</td>
           <td>{{ object.college }}</td>
           <td>{{ object.description }}</td>
-          <td>{{ object.action }}</td>
+          
           <td>
             <a href="{% url 'organization-update' object.pk %}" class="btn btn-sm btn-primary">Edit</a>
             <a href="{% url 'organization-delete' object.pk %}" class="btn btn-sm btn-danger">Delete</a>
@@ -46,3 +52,5 @@
   </table>
 </div>
 {% endblock %}
+
+
