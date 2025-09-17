@@ -16,6 +16,8 @@
       <input type="text" class="form-control" placeholder="Search..." />
     </form>
   </div>
+
+
   <div class="col-md-6 text-right">
     <a href="{% url 'organization-add' %}" class="btn btn-success">Add Organization</a>
   </div>
@@ -32,15 +34,17 @@
       </tr>
     </thead>
     <tbody>
-      {% for object in organization %}
+      {% for object in object_list %}
+
+
         <tr>
           <td>{{ object.name }}</td>
           <td>{{ object.college }}</td>
           <td>{{ object.description }}</td>
           
           <td>
-            <a href="{% url 'organization-update' object.pk %}" class="btn btn-sm btn-primary">Edit</a>
-            <a href="{% url 'organization-delete' object.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            <a href="{% url 'organization-update' object.id %}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="{% url 'organization-delete' object.id %}" class="btn btn-sm btn-danger">Delete</a>
           </td>
         </tr>
       {% empty %}
