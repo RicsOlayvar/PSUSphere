@@ -1,26 +1,37 @@
 {% extends 'base.html' %}
 {% block content %}
-<div class="card-title">List of Students</div>
+
+<!-- Header -->
+<div class="card-title">List of Organizations</div>
 <div class="card-category">Page Subtitle</div>
 
+<!-- Search + Add Button -->
 <div class="row mb-3">
   <div class="col-md-6">
-    <form class="form-inline">
-      <input type="text" class="form-control" placeholder="Search..." />
+    <form method="get" action="">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search..." value="{{ request.GET.q }}">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">
+            <i class="la la-search search-icon"></i>
+          </button>
+        </div>
+      </div>
     </form>
   </div>
-
   <div class="col-md-6 text-right">
-    <a href="{% url 'program-add' %}" class="btn btn-success">Add program</a>
+    <a href="{% url 'organization-add' %}" class="btn btn-success">Add Organization</a>
   </div>
 </div>
 
+<!-- Table -->
 <div class="card-body">
-  <table class="table">
+  <table class="table table-striped">
     <thead>
       <tr>
         <th>Name</th>
-        <th>Program</th>
+        <th>College</th>
+        <th>Description</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -28,18 +39,23 @@
       {% for object in object_list %}
         <tr>
           <td>{{ object.name }}</td>
-          <td>{{ object.program }}</td>
+          <td>{{ object.college }}</td>
+          <td>{{ object.description }}</td>
           <td>
-            <a href="{% url 'program-edit' object.pk %}" class="btn btn-sm btn-primary">Edit</a>
-            <a href="{% url 'progam-delete' object.pk %}" class="btn btn-sm btn-danger">Delete</a>
+            <a href="{% url edit_url object.pk %}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="{% url delete_url object.pk %}" class="btn btn-sm btn-danger">Delete</a>
           </td>
         </tr>
       {% empty %}
         <tr>
-          <td colspan="3" class="text-center">No Records Found</td>
+          <td colspan="4" class="text-center">No Records Found</td>
         </tr>
       {% endfor %}
     </tbody>
   </table>
+
+  <!-- Pagination -->
+  {% include 'includes/pagination.html' %}
 </div>
+
 {% endblock %}

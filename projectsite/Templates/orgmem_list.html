@@ -1,0 +1,50 @@
+<div class="card-title">List of Organization Members</div>
+<div class="card-category">Page Subtitle</div>
+
+<!-- Search + Add -->
+<div class="row mb-3">
+  <div class="col-md-6">
+    <form method="get" action="">
+      <div class="input-group">
+        <input type="text" name="q" class="form-control" placeholder="Search..." value="{{ request.GET.q }}">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary" type="submit">
+            <i class="la la-search search-icon"></i>
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="col-md-6 text-right">
+    <a href="{% url 'orgmember-add' %}" class="btn btn-success">Add Member</a>
+  </div>
+</div>
+
+<!-- Table -->
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Student</th>
+      <th>Organization</th>
+      <th>Date Joined</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for member in object_list %}
+      <tr>
+        <td>{{ member.student.firstname }} {{ member.student.lastname }}</td>
+        <td>{{ member.organization.name }}</td>
+        <td>{{ member.date_joined }}</td>
+        <td>
+          <a href="{% url orgmember-edit member.pk %}" class="btn btn-sm btn-primary">Edit</a>
+          <a href="{% url orgmember-delete member.pk %}" class="btn btn-sm btn-danger">Delete</a>
+        </td>
+      </tr>
+    {% empty %}
+      <tr><td colspan="4" class="text-center">No Records Found</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% include 'includes/pagination.html' %}

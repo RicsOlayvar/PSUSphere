@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from faker import Faker
-from studentorg.models import College, Program, Organization, Student, OrgMember
+from orgstudent.models import College, Program, Organization, Student, OrgMember
 
 class Command(BaseCommand):
     help = 'Create initial data for the application'
