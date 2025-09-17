@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="card-title">List of Students</div>
+<div class="card-category">Page Subtitle</div>
+
+<div class="row mb-3">
+  <div class="col-md-6">
+    <form class="form-inline">
+      <input type="text" class="form-control" placeholder="Search..." />
+    </form>
+  </div>
+
+  <div class="col-md-6 text-right">
+    <a href="{% url 'student-add' %}" class="btn btn-success">Add Student</a>
+  </div>
+</div>
+
+<div class="card-body">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Program</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for object in object_list %}
+        <tr>
+          <td>{{ object.name }}</td>
+          <td>{{ object.program }}</td>
+          <td>
+            <a href="{% url 'student-edit' object.id %}" class="btn btn-sm btn-primary">Edit</a>
+            <a href="{% url 'student-delete' object.id %}" class="btn btn-sm btn-danger">Delete</a>
+          </td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="3" class="text-center">No Records Found</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}
